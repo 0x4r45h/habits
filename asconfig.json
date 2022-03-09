@@ -1,6 +1,5 @@
 {
   "workspaces": [
-    "src/project",
-    "src/singleton"
+    "src/project"
   ]
 }
