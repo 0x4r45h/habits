@@ -59,8 +59,6 @@ export class Contract {
 
         }
         if (hadProgress) {
-            log("in hadProgress block" + hadProgress.toString());
-
             // good job reduce the remaining duration by one unit
             goal.progress();
             if (goal.remainingDuration == 0) {
@@ -76,8 +74,6 @@ export class Contract {
                 return;
             }
             this.get_accounts_goals().set(sender, goal);
-            log("before last return" + hadProgress.toString());
-
             return;
         }
         // should have reason

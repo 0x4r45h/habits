@@ -20,21 +20,19 @@ It uses the following setup:
 *This window is used to compile, deploy and control the contract*
 - Environment
   ```sh
-  export CONTRACT=        # depends on deployment
-  export OWNER=           # any account you control
+  export CONTRACT_NAME=        # depends on deployment
 
   # for example
-  # export CONTRACT=dev-1615190770786-2702449
-  # export OWNER=sherif.testnet
+  # export CONTRACT_NAME=dev-1615190770786-2702449
   ```
 
 - Commands
 
   _helper scripts_
   ```sh
-  1.dev-deploy.sh                # helper: build and deploy contracts
-  2.use-contract.sh              # helper: call methods on ContractPromise
-  3.cleanup.sh                   # helper: delete build and deploy artifacts
+  1.dev-deploy.sh               # helper: build and deploy contracts
+  2.set-goal.sh                 # helper: create a goal for the account
+  3.update-progress.sh          # helper: update progress of goal
   ```
 
 ### Terminal **B**
@@ -42,17 +40,17 @@ It uses the following setup:
 *This window is used to render the contract account storage*
 - Environment
   ```sh
-  export CONTRACT=               # depends on deployment
+  export CONTRACT_NAME=               # depends on deployment
 
   # for example
-  # export CONTRACT=dev-1615190770786-2702449
+  # export CONTRACT_NAME=dev-1615190770786-2702449
   ```
 
 - Commands
   ```sh
   # monitor contract storage using near-account-utils
   # https://github.com/near-examples/near-account-utils
-  watch -d -n 1 yarn storage $CONTRACT
+  watch -d -n 1 yarn storage $CONTRACT_NAME
   ```
 ---
 
