@@ -32,7 +32,7 @@ export type Timestamp = u64;
 export type Description = string;
 export type Duration = u16;
 export type Interval = u32;
-export type Reason = string;
+export type Excuse = string;
 /**
  * == CONSTANTS ================================================================
  *

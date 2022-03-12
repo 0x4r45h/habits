@@ -8,7 +8,7 @@ import {
     Interval,
     ONE_DAY_MILLISECOND,
     ONE_NEAR,
-    Reason,
+    Excuse,
     Timestamp,
     XCC_GAS,
 } from "../../utils";
@@ -33,7 +33,7 @@ export class Contract {
     }
 
     @mutateState()
-    post_progress(hadProgress: boolean, reason : Reason): void {
+    post_progress(hadProgress: boolean, excuse : Excuse): void {
         const sender = Context.sender;
         const goal = this.get_accounts_goals().getSome(sender)
         const passedIntervals = Contract.passedIntervals(goal.updatedAt, goal.interval);
@@ -52,6 +52,7 @@ export class Contract {
             this.slash(slashAmount, goal);
 
             if (goal.remainingCollateral == u128.Zero) {
+                logging.log("the collateral is depleted, closing the goal");
                 // close the goal
                 this.get_accounts_goals().delete(sender);
                 return;
@@ -69,6 +70,7 @@ export class Contract {
                 const self = Context.contractName;
 
                 to_sender.transfer(goal.remainingCollateral);
+                logging.log("goal achieved , returning remaining collateral : " + goal.remainingCollateral.toString());
 
                 to_sender.then(self).function_call("on_payout_complete", "{}", u128.Zero, XCC_GAS);
                 return;
@@ -76,9 +78,9 @@ export class Contract {
             this.get_accounts_goals().set(sender, goal);
             return;
         }
-        // should have reason
-        assert(reason != '', "You should Explain why you couldn't make progress")
-        goal.noProgress(reason);
+        // should have excuse
+        assert(excuse != '', "You should Explain why you couldn't make progress")
+        goal.noProgress(excuse);
         this.get_accounts_goals().set(sender, goal);
 
     }

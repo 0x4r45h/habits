@@ -84,7 +84,7 @@ describe("Update a goal's progress", () => {
 
   describe("hadProgress = false scenarios", () => {
 
-    throws("should fail if hadProgress is false while reason is empty", () => {
+    throws("should fail if hadProgress is false while excuse is empty", () => {
       const mockNow = mockBlockTimeStamp();
       const goal = createGoal(toYocto(1), 'something', 5, 2);
       contract.get_accounts_goals().set(DEFAULT_ACCOUNT, goal)
@@ -92,7 +92,7 @@ describe("Update a goal's progress", () => {
       mockBlockTimeStamp(mockNow + 4)
       contract.post_progress(false, '');
     })
-    it("should save no progress reason", () => {
+    it("should save no progress excuse", () => {
       let mockNow = mockBlockTimeStamp();
       const duration: Duration= 5;
       const goal = createGoal(toYocto(1), 'something', duration, 2);
@@ -104,7 +104,7 @@ describe("Update a goal's progress", () => {
 
       const updatedGoal = contract.get_accounts_goals().getSome(DEFAULT_ACCOUNT);
       expect(updatedGoal.updatedAt).toStrictEqual(mockNow);
-      expect(updatedGoal.failReasons[0]).toStrictEqual('laziness');
+      expect(updatedGoal.failExcuses[0]).toStrictEqual('laziness');
       expect(updatedGoal.remainingCollateral).toStrictEqual(toYocto(1));
       expect(updatedGoal.remainingDuration).toStrictEqual(duration);
     })

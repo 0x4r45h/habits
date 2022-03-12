@@ -1,11 +1,11 @@
-import {Amount, Timestamp, Description, Duration, Reason, Interval} from "../../utils";
+import {Amount, Timestamp, Description, Duration, Excuse, Interval} from "../../utils";
 import {Context, PersistentVector} from "near-sdk-as";
 
 @nearBindgen
 export class Goal {
     public remainingDuration: Duration;
     public remainingCollateral: Amount;
-    public failReasons : Array<Reason> = [];
+    public failExcuses : Array<Excuse> = [];
     constructor(
         public collateral: Amount,
         public description: Description,
@@ -23,8 +23,8 @@ export class Goal {
             this.remainingDuration--;
         }
     }
-    noProgress(reason: Reason): void {
+    noProgress(excuse: Excuse): void {
         this.updatedAt = Context.blockTimestamp / 1_000_000;
-        this.failReasons.push(reason);
+        this.failExcuses.push(excuse);
     }
 }
