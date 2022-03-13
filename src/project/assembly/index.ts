@@ -17,11 +17,6 @@ import {
 export class Contract {
     public treasury : Amount ;
 
-    @mutateState()
-    hello_world(amount : Amount = u128.from(5)) : string {
-        this.treasury = amount;
-        return "hello world";
-    }
     post_goal(description: Description, duration: Duration, interval: Interval = ONE_DAY_MILLISECOND): void {
         const sender = Context.sender;
         const deposit = Context.attachedDeposit;

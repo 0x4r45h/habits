@@ -27,7 +27,7 @@ INSTALL `NEAR CLI` first like this: `npm i -g near-cli`
 1. clone this repo to a local folder
 2. run `yarn`
 3. run `./scripts/1.dev-deploy.sh`
-3. run `./scripts/2.set-goal.sh`
+4. run `./scripts/2.set-goal.sh`
 5. run `./scripts/3.update-progress.sh`
 
 for more info about parameters definitions refer to corresponding script file

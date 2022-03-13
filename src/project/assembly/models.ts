@@ -1,5 +1,5 @@
 import {Amount, Timestamp, Description, Duration, Excuse, Interval} from "../../utils";
-import {Context, PersistentVector} from "near-sdk-as";
+import {Context} from "near-sdk-as";
 
 @nearBindgen
 export class Goal {
