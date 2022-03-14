@@ -32,3 +32,9 @@ INSTALL `NEAR CLI` first like this: `npm i -g near-cli`
 
 for more info about parameters definitions refer to corresponding script file
 
+### Tests
+
+run all tests with :
+```bash
+yarn test
+```
