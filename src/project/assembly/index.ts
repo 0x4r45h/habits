@@ -34,7 +34,7 @@ export class Contract {
         const passedIntervals = Contract.passedIntervals(goal.updatedAt, goal.interval);
         logging.log("ticks passed since last update: " + passedIntervals.toString());
         // should be able to call this function only once in each interval
-        assert(passedIntervals > 0, "You can update your progress only once every " + goal.interval.toString() + "milliseconds");
+        assert(passedIntervals > 0, "You can update your progress only once every " + goal.interval.toString() + " milliseconds");
         if (passedIntervals > 3) {
             logging.log("going to slash...");
 
