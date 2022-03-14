@@ -1,6 +1,6 @@
 # Habits
 
-This repository is a very simple smart contract that helps users to build good habits by force! it is written in AssemblyScript contracts targeting the NEAR platform.
+This repository is a very simple smart contract that helps users to build up good habits by force! it is written in AssemblyScript contracts targeting the NEAR platform.
 
 ## Concept
 
